@@ -3,10 +3,20 @@ import { Link } from "react-router-dom";
 import { ThemeContext } from "../contexts/ThemeContext";
 
 export class Navbar extends Component {
+  static contextType = ThemeContext;
+
   render() {
+    const light = this.context.LightTheme.name;
+    const dark = this.context.DarkTheme.name;
+    const isLightTheme = this.context.isLightTheme;
     console.log("Themes props ::" + JSON.stringify(this.props.children));
     return (
-      <nav className='navbar navbar-expand-lg navbar-light bg-light'>
+      <nav
+        className={
+          isLightTheme
+            ? "navbar navbar-expand-lg  navbar-light bg-" + dark
+            : "navbar navbar-expand-lg navbar-light bg-" + light
+        }>
         <Link className='navbar-brand' to='/'>
           Context-api and Hooks course
         </Link>

@@ -12,7 +12,7 @@ const Landing = () => {
         className={
           Theme.isLightTheme ? "jumbotron bg-" + light : "jumbotron bg-" + dark
         }>
-        <h1 className='display-4 text-info'>The Booking-List app </h1>
+        <h1 className='display-4 text-info'>The Books List app </h1>
         <p className='lead text-info'>Welcome to this simple app </p>
 
         <p className='text-warning'>It uses context-api and hooks. </p>

@@ -5,7 +5,7 @@ import Booklist from "./components/Booklist";
 import Landing from "./components/Landing";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Themes from "./themes";
-
+import AddBookForm from "./components/AddBookForm";
 const Books = [
   {
     name: "book1 Name",
@@ -47,7 +47,7 @@ function App() {
               <Route exact path='/booklist' component={Booklist}></Route>
             </Switch>
           </div>
-
+          <AddBookForm />
           {/* <Booklist></Booklist> */}
         </Fragment>
       </BrowserRouter>
