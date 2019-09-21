@@ -1,19 +1,21 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 //import Themes from "../themes";
-import { ThemeContext } from "../contexts/ThemeContext";
+import { BooksContext } from "../contexts/BooksContext";
 import Book from "./Book";
 
 const Booklist = () => {
-  const Books = useContext(ThemeContext);
-  console.log(Books);
+  const booksContext = useContext(BooksContext);
+  useEffect(() => {
+    console.log("Use Effect ran ", booksContext.books);
+  });
+
+  console.log(booksContext);
   return (
     <>
-      <div className='container mt-5'>
-        <ul className='list-group'>
-          {Books.map(book => (
-            <Book book={book} key={book.name}></Book>
-          ))}
-        </ul>
+      <div className='row'>
+        {booksContext.books.map(book => (
+          <Book book={book} key={book.id}></Book>
+        ))}
       </div>
     </>
   );

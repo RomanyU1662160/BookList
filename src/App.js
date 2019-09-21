@@ -6,6 +6,10 @@ import Landing from "./components/Landing";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Themes from "./themes";
 import AddBookForm from "./components/AddBookForm";
+import AuthProvider from "./contexts/AuthContext";
+import AddNewbookForm from "./components/AddnewBook";
+import BooksProvider from "./contexts/BooksContext";
+
 const Books = [
   {
     name: "book1 Name",
@@ -37,21 +41,26 @@ const Books = [
 
 function App() {
   return (
-    <ThemeProvider value={Themes}>
-      <BrowserRouter>
-        <Fragment>
-          <NavBar></NavBar>
-          <div className='container-fluid'>
-            <Switch>
-              <Route exact path='/' component={Landing}></Route>
-              <Route exact path='/booklist' component={Booklist}></Route>
-            </Switch>
-          </div>
-          <AddBookForm />
-          {/* <Booklist></Booklist> */}
-        </Fragment>
-      </BrowserRouter>
-    </ThemeProvider>
+    <BooksProvider>
+      <AuthProvider>
+        <ThemeProvider value={Themes}>
+          <BrowserRouter>
+            <Fragment>
+              <NavBar></NavBar>
+              <div className='container-fluid'>
+                <Switch>
+                  <Route exact path='/' component={Landing}></Route>
+                  <Route exact path='/booklist' component={Booklist}></Route>
+                </Switch>
+              </div>
+              <AddNewbookForm />
+              <hr />
+              <Booklist></Booklist>
+            </Fragment>
+          </BrowserRouter>
+        </ThemeProvider>
+      </AuthProvider>
+    </BooksProvider>
   );
 }
 
